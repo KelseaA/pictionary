@@ -7,6 +7,8 @@
 <style>
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -26,9 +28,13 @@ h1 {
     text-align: center;
     padding: 10px;
 }
-#guess-display{
-    background: lightgrey;
-    padding: 10px;
+
+ul, li{
+    display: inline;
+}
+
+li{
+    font-size: .75em;
 }
 
 canvas {
@@ -51,6 +57,8 @@ canvas {
     <div id="guess">
         Make a guess: <input type="text">
     </div>
-    <div id="guess-display"></div>
+    <div id="guess-display">
+        <ul id="guess-list"></ul>
+    </div>
 </div>
 <canvas id="canvas"></canvas>

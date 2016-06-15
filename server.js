@@ -11,6 +11,7 @@ var io = socket_io(server);
 io.on("connection", function(socket){
 	socket.on('guess', function(guess) {
 		socket.emit("guess", guess);
+		socket.broadcast.emit("guess", guess);
         console.log(guess);
     });
 });

@@ -1,9 +1,10 @@
 var socket = io();
 var drawing = false;
 var guessBox;
-var guessDisplay = $("#guess-display");
 
 var pictionary = function() {
+    var guessDisplay = $("#guess-list");
+    var guessBox;
     var canvas, context;
 
     var draw = function(position) {
@@ -17,8 +18,8 @@ var pictionary = function() {
         if (event.keyCode != 13) { // Enter
             return;
         }
-        socket.emit('guess', guessBox.val());
         console.log(guessBox.val());
+        socket.emit('guess', guessBox.val());
         guessBox.val('');
     };
 
@@ -27,7 +28,7 @@ var pictionary = function() {
     
         
     socket.on('guess', function(guess){
-        guessDisplay.text(guess);
+        guessDisplay.append("<li>" + guess + " </li>");
     });
 
     canvas = $('canvas');

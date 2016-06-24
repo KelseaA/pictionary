@@ -25,12 +25,13 @@ var pictionary = function() {
 
     guessBox = $('#guess input');
     guessBox.on('keydown', onKeyDown);
-    
         
     socket.on('guess', function(guess){
         guessDisplay.append("<li>" + guess + " </li>");
     });
 
+    socket.on('draw', draw);
+    
     canvas = $('canvas');
     context = canvas[0].getContext('2d');
     canvas[0].width = canvas[0].offsetWidth;
@@ -50,6 +51,8 @@ var pictionary = function() {
             var position = {x: event.pageX - offset.left,
                             y: event.pageY - offset.top};
             draw(position);
+            socket.emit('draw', position);
+            console.log("you're drawing");
             }
         });
 };

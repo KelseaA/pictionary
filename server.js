@@ -14,6 +14,9 @@ io.on("connection", function(socket){
 		socket.broadcast.emit("guess", guess);
         console.log(guess);
     });
+    socket.on('draw', function(position){
+        io.emit('draw', position);
+    });
 });
 
 server.listen(8080);
